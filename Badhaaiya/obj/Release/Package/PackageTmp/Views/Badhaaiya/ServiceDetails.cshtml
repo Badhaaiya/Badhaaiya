@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "ServiceDetails";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php') ?>*@
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Business Services</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="form_service_details">
+                                    <div class="row mt-3 m-0" id="target_venue">
+                                        <div class="col-lg-12 mb-2">
+                                            <h6 class="text-label">Service Details</h6>
+                                        </div>
+                                        <div class="col-lg-3 mb-0 addon-service">
+                                            <div class="form-group">
+                                                <input type="text" name="configution_title[]" required="" class="form-control mb-2" placeholder="Service Title">
+                                                <input type="number" name="conguration_amount[]" required="" class="form-control" placeholder="Amount" min="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-2">
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="add_field_venue"><span class="glyphicon glyphicon-plus"></span>Add Services</button>
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="remove_field_venue"><span class="glyphicon glyphicon-plus"></span>Remove Services</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;">
+                                        <a href="~/Badhaaiya/BookedDate"><button class="btn btn-primary sw-btn-prev disabled" type="button">Previous</button></a>
+                                        <a href="~/Badhaaiya/Monopoly"><button class="btn btn-primary sw-btn-next" type="button">Next</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+
+</html>
+

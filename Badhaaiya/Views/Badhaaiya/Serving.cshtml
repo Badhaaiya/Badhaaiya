@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Serving";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php') ?>*@
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Business Services</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="form_serving">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Service Timing</h6>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Morning" class="service_time_check form-check-input" id="morning">
+                                                    <label class="form-check-label" for="morning">Morning</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Evening" class="service_time_check form-check-input" id="evening">
+                                                    <label class="form-check-label" for="evening">Evening</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group amenities">
+                                                <h6 class="text-label">Amenities</h6>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Parking" class="form-check-input" id="parking">
+                                                    <label class="form-check-label" for="parking">Parking</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Air Condition" class="form-check-input" id="ac">
+                                                    <label class="form-check-label" for="ac">Air Condition</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Music" class="form-check-input" id="music">
+                                                    <label class="form-check-label" for="music">Music</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Buffet System" class="form-check-input" id="buffer">
+                                                    <label class="form-check-label" for="buffer">Buffet System</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Changing Room" class="form-check-input" id="changing">
+                                                    <label class="form-check-label" for="changing">Changing Room</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Wi-Fi" class="form-check-input" id="wifi">
+                                                    <label class="form-check-label" for="wifi">Wi-Fi</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Housekeeping" class="form-check-input" id="housekeeping">
+                                                    <label class="form-check-label" for="housekeeping">Housekeeping</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="In-Room Dining" class="form-check-input" id="in-room">
+                                                    <label class="form-check-label" for="in-room">In-Room Dining</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="laundry-service" class="service_time_check form-check-input" id="laundry-service">
+                                                    <label class="form-check-label" for="laundry-service">Laundry Service</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Spa" class="service_time_check form-check-input" id="spa">
+                                                    <label class="form-check-label" for="spa">Spa</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Family Rooms" class="service_time_check form-check-input" id="family-rooms">
+                                                    <label class="form-check-label" for="family-rooms">Family Rooms</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Swimming Pool" class="service_time_check form-check-input" id="swimming-pool">
+                                                    <label class="form-check-label" for="swimming-pool">Swimming Pool</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Valet Parking" class="service_time_check form-check-input" id="valet-parking">
+                                                    <label class="form-check-label" for="valet-parking">Valet Parking</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Waiters" class="form-check-input" id="waiters">
+                                                    <label class="form-check-label" for="waiters">Waiters</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="amenities[]" value="Alcohol" class="form-check-input" id="alcohol">
+                                                    <label class="form-check-label" for="alcohol">Alcohol</label>
+                                                </div>
+                                                <div class="row">
+                                                    <button type="button" class="btn menu-items btn-link btn-sm" onclick="javascript:toggleCheck(true,this);">Select All</button>
+                                                    <button type="button" class="btn menu-items btn-link btn-sm" onclick="javascript:toggleCheck(false,this);">Deselect All</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Serves</h6>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Liquor" class="service_time_check form-check-input" id="liquor">
+                                                    <label class="form-check-label" for="liquor">Liquor</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="service_time[]" value="Live Counters" class="service_time_check form-check-input" id="live-counters">
+                                                    <label class="form-check-label" for="live-counters">Live Counters</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Minimum Serving Capacity</h6>
+                                                <input type="number" name="minimum_serving" class="form-control" placeholder="eg .100" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Maximum Serving Capacity</h6>
+                                                <input type="number" name="maximum_serving" class="form-control" placeholder=" eg .500" min="0">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;">
+                                        <button class="btn btn-primary sw-btn-prev disabled" type="button">Previous</button>
+                                        <a href="~/Badhaaiya/PriceDiffer"><button class="btn btn-primary sw-btn-next" type="button">Next</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+
+</html>

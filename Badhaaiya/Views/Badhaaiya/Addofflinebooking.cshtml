@@ -1,0 +1,737 @@
+﻿
+@{
+    ViewBag.Title = "Addofflinebooking";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+    <!-- Daterange picker -->
+    <link href="~/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+    <!-- Pick date -->
+    <link href="~/vendor/pickadate/themes/default.css" rel="stylesheet" />
+    <link href="~/vendor/pickadate/themes/default.date.css" rel="stylesheet" />
+    <!-- Favicon icon -->
+    <!-- <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"> -->
+    <!-- Datatable -->
+    <link href="~/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <form id="add_offline_booking">
+
+                    <div class="row">
+                        <div class="col-xl-12 col-xxl-12 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Offline Booking Details</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Customer Name</h6>
+                                                <input type="text" name="customer_name" class="form-control" placeholder="Full Name" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Mobile Number</h6>
+                                                <input type="number" name="mobile_number" class="form-control" placeholder="Mobile number" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Booking Type</h6>
+                                                <input type="text" name="booking_type" value="Venue" class="form-control" readonly required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Date & Time of Event</h6>
+                                                <input type="datetime-local" name="date_of_event" class="form-control" required>
+                                                <!-- datepicker-default -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Time of Event</h6>
+                                                <select name="service_location" class="form-control" required>
+                                                    <option value="" disabled selected hidden>--Select--</option>
+                                                    <option value="Afternoon">Afternoon</option>
+                                                    <option value="Evening">Evening</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-3">
+                                            <!-- <div class="form-group">
+                                                <h6 class="text-label">Service Location</h6>
+                                                <select name="service_location" class="form-control" required>
+                                                    <option value="" disabled selected hidden>--Select--</option>
+                                                    <option value="Mumbai">Mumbai</option>
+                                                    <option value="Bangalore">Bangalore</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Ahmedabad">Ahmedabad</option>
+                                                </select>
+                                            </div> -->
+                                        </div>
+
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Date & Time of Event</h6>
+                                                <input type="datetime-local" name="date_of_event" class="form-control" required>
+                                                <!-- datepicker-default -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-8 mb-3">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Event Address</h6>
+                                                <input type="text" name="date_of_event" class="form-control" placeholder="Enter Event Address" required>
+                                                <!-- datepicker-default -->
+                                            </div>
+                                        </div>
+
+                                        <div id="package_id_input_field">
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <!-- </form> is getting closed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- if business_category is Venue -->
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">venue Types</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <p>Floor selected by the customer if the vender have multiple floor option</p> -->
+                                    <div id="venue_table" class="table-responsive">
+                                        <table id="example3" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr No.</th>
+                                                    <th>Title</th>
+                                                    <th>Amount</th>
+                                                    <!-- <th>Serving Time</th> -->
+                                                    <th>Buttons</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td> 1 </td>
+                                                    <td> config title 3 Updated </td>
+                                                    <td>₹ 3,000 </td>
+                                                    <td>
+                                                        <button class="add-btn-venue-config btn menu-items btn-primary btn-sm"><span class="glyphicon glyphicon-plus">Add</span></button>
+                                                        <button class="remove-btn-config btn menu-items btn-danger btn-sm" disabled>Remove</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- If Business business_category is Caterer mono_poly with Venue -->
+                    <div class="row">
+                        <div class="col-xl-12 col-xxl-12">
+                            <div class="card">
+                                <div class="col-12">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Catering Menu Items</h4>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
+                                                <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                        <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                        <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#menu_add_modal" class="dropdown-item">Add Menu Items </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="example3" class="display" style="min-width: 845px">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr No</th>
+                                                        <th>Menu Items</th>
+                                                        <th>Menu Options</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>
+                                                            Veg starter
+                                                        </td>
+                                                        <td>
+                                                            Chapati, Sabzi, Daal, Chawal, Papad, Raita
+                                                        </td>
+                                                        <td>
+                                                            <button class="menu_data_btn_show btn btn-primary btn-xs px-2" data-menu_tb_id="1" data-service_type="2" data-toggle="modal" data-target="#menu_modal">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </button>
+                                                            <button class="cat-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#caterer_delete_modal" data-menu_tb_id="1">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>
+                                                            Refreshment
+                                                        </td>
+                                                        <td>
+                                                            Mojito, Soft Drinks, Fruit Juice
+                                                        </td>
+                                                        <td>
+                                                            <button class="menu_data_btn_show btn btn-primary btn-xs px-2" data-menu_tb_id="2" data-service_type="2" data-toggle="modal" data-target="#menu_modal">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </button>
+                                                            <button class="cat-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#caterer_delete_modal" data-menu_tb_id="2">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>
+                                                            Coldrinks
+                                                        </td>
+                                                        <td>
+                                                            pepsi, cola, miranda
+                                                        </td>
+                                                        <td>
+                                                            <button class="menu_data_btn_show btn btn-primary btn-xs px-2" data-menu_tb_id="3" data-service_type="2" data-toggle="modal" data-target="#menu_modal">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </button>
+                                                            <button class="cat-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#caterer_delete_modal" data-menu_tb_id="3">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- <div class="col-lg-12 text-right mt-3"> <button type="button" class="btn btn-rounded btn-primary">Submit</button></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If Business business_category is Caterer mono_poly with Venue -->
+                    <!-- Modal For View of Caterer Menu Data Edit -->
+                    <div id="menu_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header mb-2">
+                                    <h4 class="modal-title">Edit Menu Items </h4>
+                                </div>
+                                <div class="modal-body p-0">
+                                    <div class="alert notification m-0 text-center">
+                                        <form id="caterer_menu_update">
+                                            <div class="row" id="menu_modal_display">
+                                                <div class="col-lg-12 mb-0 addon-service1">
+                                                    <div class="form-group">
+                                                        <select name="menu_type" id="menu_type" class="form-control mb-2">
+                                                            <option value="Veg" selected="selected">Veg</option>
+                                                            <option value="Non Veg">Non-Veg</option>
+                                                            <option value="Both">Both</option>
+                                                        </select>
+                                                        <input type="hidden" name="product_id" value="1">
+                                                        <input type="hidden" name="service_type" value="2">
+                                                        <input type="hidden" name="catering_data" value="show_menu_data">
+                                                        <input type="text" name="items_name" value="veg starter" class="form-control mb-2" placeholder="Items Name">
+                                                        <input type="text" name="menu_option" value="Chapati, Sabzi, Daal, Chawal, Papad, Raita" class="form-control mb-2" placeholder="Menu Option">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="btn btn-primary btn-md" id="add_field_venue">Update</button>
+                                                    <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal For View of Caterer Menu Data Edit -->
+                    <!-- Modal For Deleting Caterer Data -->
+                    <div id="caterer_delete_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-md  modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="alert alert-light notification m-0 text-center">
+                                        <div class="swal2-header">
+                                            <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                            <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                            <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                            <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                            <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                <span class="swal2-danger-line-tip"></span>
+                                                <span class="swal2-success-line-long"></span>
+                                                <div class="swal2-success-ring"></div>
+                                                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                            </div>
+                                            <img class="swal2-image" style="display: none;">
+                                            <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                                            <form id="caterer_data_delete">
+
+                                                <div class="col-lg-12 mb-0 addon-service" id="target_caterer">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="product_delete_id" id="cat_delete_id" value="" required class="form-control mb-2" placeholder="Title">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-0">
+                                                    <div class="col-lg-12 mb-4">
+                                                        <button type="submit" class="cat_data_delete_btn btn btn-primary btn-sm" id="add_field_venue">Yes! Delete it.</button>
+                                                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal For Deleting Decorator Data -->
+
+
+                    <div class="row Decorator-card">
+                        <div class="col-lg-12 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Decorator Types</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <p>Floor selected by the customer if the vender have multiple floor option</p> -->
+                                    <div id="decorator_table" class="table-responsive">
+                                        <table id="example3" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr No.</th>
+                                                    <th></th>
+                                                    <th>Title</th>
+                                                    <th>Amount</th>
+                                                    <!-- <th>Serving Time</th> -->
+                                                    <th>Buttons</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td> 1 </td>
+                                                    <td><img src="https://img.freepik.com/premium-photo/luxury-room-interior-hd-ai-generative-8k-wallpaper-stock-photographic-image_929434-776.jpg"></td>
+                                                    <td> Testing1 </td>
+                                                    <td>₹ 2,000 </td>
+                                                    <td>
+                                                        <button class="add-btn-venue-config btn menu-items btn-primary btn-sm"><span class="glyphicon glyphicon-plus">Add</span></button>
+                                                        <button class="remove-btn-config btn menu-items btn-danger btn-sm" disabled>Remove</button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td> 2 </td>
+                                                    <td><img src="https://img.freepik.com/premium-photo/wedding-backdrop-wallpaper_756748-1422.jpg"></td>
+                                                    <td> Testing </td>
+                                                    <td>₹ 1,000 </td>
+                                                    <td>
+                                                        <button class="add-btn-venue-config btn menu-items btn-primary btn-sm"><span class="glyphicon glyphicon-plus">Add</span></button>
+                                                        <button class="remove-btn-config btn menu-items btn-danger btn-sm" disabled>Remove</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-3 col-xxl-4 col-sm-6">
+                            <div class="card user-card">
+                                <div class="card-body pb-0">
+
+                                    <div class="d-flex mb-3 align-items-center">
+                                        <div class="dz-media mr-3">
+                                            <img src="https://img.freepik.com/premium-photo/luxury-room-interior-hd-ai-generative-8k-wallpaper-stock-photographic-image_929434-776.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <h5 class="title"><a href="javascript:void(0);"> Testing1</a></h5>
+                                            <span class="text-primary"></span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <span class="mb-0 title">Price</span> :
+                                            <span class="text-black ml-2">2000</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="add-btn-decorator btn btn-primary btn-xs" data-decorator_tb_id="3" data-amount3="2000">Add</button>
+                                    <button type="button" class="remove-btn-decorator btn btn-primary btn-xs" data-decorator_tb_id="3" data-amount3="2000" disabled>Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-xxl-4 col-sm-6">
+                            <div class="card user-card">
+                                <div class="card-body pb-0">
+
+                                    <div class="d-flex mb-3 align-items-center">
+                                        <div class="dz-media mr-3">
+                                            <img src="https://img.freepik.com/premium-photo/wedding-backdrop-wallpaper_756748-1422.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <h5 class="title"><a href="javascript:void(0);"> Testing</a></h5>
+                                            <span class="text-primary"></span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <span class="mb-0 title">Price</span> :
+                                            <span class="text-black ml-2">1000</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="add-btn-decorator btn btn-primary btn-xs" data-decorator_tb_id="4" data-amount3="1000">Add</button>
+                                    <button type="button" class="remove-btn-decorator btn btn-primary btn-xs" data-decorator_tb_id="4" data-amount3="1000" disabled>Remove</button>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="row Music-card">
+                    </div>
+
+                    <!-- if business_category is Venue -->
+                    <!-- if business_category is Caterer -->
+                    <!--Menu card-->
+                    <div id="view-menu-modal" class="modal fade bd-example-modal-sm modal-reject-booking" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog  modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body p-1">
+                                    <div class="card mb-0 text-black">
+                                        <div id="menu-package">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-link btn-sm" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Menu card-->
+                    <!-- if business_category is Decorator -->
+                    <!-- if business_category is Anything Else -->
+                    <!-- if business_category is Anything Else -->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title mt-3">Payment Details</h4>
+                                </div>
+                                <div class="row payment m-0">
+                                    <div class="col-lg-4 mb-2 mt-3">
+                                        <div class="form-group">
+                                            <h6 class="text-label mb-3">Total amount</h6>
+                                            <input type="number" name="total_amount" class="form-control" id="total-input-amount" placeholder="Total amount.." value="" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 mb-2 mt-3">
+                                        <div class="form-group">
+                                            <h6 class="text-label mb-3">Payment type</h6>
+                                            <select name="payment_type" id="payment_type" class="form-control" required="">
+                                                <option value="1" selected="">Full payment</option>
+                                                <option value="0">Partial payment</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 mb-3 mt-3">
+                                        <div class="form-group">
+                                            <h6 class="text-label mb-3">Amount Received</h6>
+                                            <input type="text" name="amount_paid" class="form-control" id="payed" placeholder="Rs." value="" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 mb-3 mt-3">
+                                        <div class="form-group">
+                                            <h6 class="text-label mb-3">Balance amount</h6>
+                                            <input type="number" name="balance_amount" class="form-control" id="balance" placeholder="Rs." value="" required="" readonly="">
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="booking_type" value="0">
+
+                                    <div class="col-lg-12 text-right mb-3">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <div id="success-modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="alert alert-light notification m-0 text-center">
+
+                            <div class="swal2-header">
+                                <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                    <span class="swal2-success-line-tip"></span>
+                                    <span class="swal2-success-line-long"></span>
+                                    <div class="swal2-success-ring"></div>
+                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                </div>
+                                <img class="swal2-image" style="display: none;">
+                                <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Success! </h2>
+                                <p id="success_msg"></p>
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="error-modal" class="fade bd-example-modal-sm modal reject" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog  modal-md  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+
+                        <div style="display:block;" class="alert alert-danger notification m-0 text-center">
+
+                            <div class="swal2-header text-center">
+                                <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                                    <span class="swal2-x-mark">
+                                        <span class="swal2-x-mark-line-left"></span>
+                                        <span class="swal2-x-mark-line-right"></span>
+                                    </span>
+                                </div>
+
+                                <div class="swal2-icon swal2-question" style="display: none;">
+                                    <span class="swal2-icon-text">?</span>
+                                </div>
+
+                                <div class="swal2-icon swal2-warning" style="display: none;">
+                                    <span class="swal2-icon-text">!</span>
+                                </div>
+
+                                <div class="swal2-icon swal2-info" style="display: none;">
+                                    <span class="swal2-icon-text">i</span>
+                                </div>
+
+                                <div class="swal2-icon swal2-success" style="display: none;">
+                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                    <span class="swal2-success-line-tip"></span>
+                                    <span class="swal2-success-line-long"></span>
+                                    <div class="swal2-success-ring"></div>
+                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                </div>
+
+                                <img class="swal2-image" style="display: none;">
+                                <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Oops... </h2>
+                                <button type="button" class="swal2-close" style="display: none;">×</button>
+
+                            </div>
+                            <p style="font-size:1rem;" id="error_msg"></p>
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Modal For Adding Caterer Menu Data -->
+    <div id="menu_add_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header mb-2">
+                    <h4 class="modal-title">Add Menu Items </h4>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="alert notification m-0 text-center">
+                        <div class="row" id="menu_add_modal_display">
+                            <div class="col-lg-12 mb-0 addon-service1">
+                                <div class="form-group">
+                                    <select name="menu_type" id="menu_type" class="form-control mb-2">
+                                        <option value="Veg">Veg</option>
+                                        <option value="Non Veg">Non-Veg</option>
+                                        <option value="Both">Both</option>
+                                    </select>
+                                    <input type="hidden" name="product_id">
+                                    <input type="hidden" name="service_type" id="service_type2" value="2">
+                                    <input type="hidden" name="catering_data">
+                                    <input type="text" name="items_name" id="items_name" class="form-control mb-2" placeholder="Items Name">
+                                    <input type="text" name="menu_option" id="menu_option" class="form-control mb-2" placeholder="Menu Option">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 mb-2">
+                                <button type="button" class="btn menu-items btn-link btn-sm" id="add_field_caterer"><span class="glyphicon glyphicon-plus"></span>Add Menu</button>
+                                <button type="button" class="btn menu-items btn-link btn-sm" id="remove_field_caterer"><span class="glyphicon glyphicon-plus"></span>Remove Menu</button>
+                            </div>
+                        </div>
+                        <div class="row m-0">
+                            <div class="col-lg-12 mb-4">
+                                <button type="submit" class="menu_data_add_btn btn btn-primary btn-md" id="add_field_venue">Add Menu Items</button>
+                                <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal For Adding Caterer Menu Data -->
+    <!-- Modal For Making Monopoly Status Active/Inactive or Delete -->
+    <div id="make_monopoly_status_change" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-md  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="alert alert-light notification m-0 text-center">
+                        <div class="swal2-header">
+                            <ul class="swal2-progresssteps" style="display: none;"></ul>
+                            <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                            <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                            <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                            <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                <span class="swal2-danger-line-tip"></span>
+                                <span class="swal2-success-line-long"></span>
+                                <div class="swal2-success-ring"></div>
+                                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                            </div>
+                            <img class="swal2-image" style="display: none;">
+                            <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                            <form id="monopoly_status_change_form">
+
+                                <div class="col-lg-12 mb-0 addon-service" id="target_decorator">
+                                    <div class="form-group">
+                                        <input type="hidden" name="action" id="action" value="">
+                                        <input type="hidden" name="service_type" id="service_type" value="" required class="form-control mb-2" placeholder="Title">
+                                    </div>
+                                </div>
+
+                                <div class="row m-0">
+                                    <div class="col-lg-12 mb-4">
+                                        <button type="submit" class="ser_data_delete_btn btn btn-primary btn-lg" id="add_field_venue">Yes!</button>
+                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal For Making Monopoly Status Active/Inactive or Delete -->
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+<!-- Required vendors -->
+<script src="~/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/js/plugins-init/datatables.init.js"></script>
+
+</html>
+

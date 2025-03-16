@@ -1,0 +1,1064 @@
+﻿
+@{
+    ViewBag.Title = "ViewService";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+    <link href="~/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    
+</head>
+
+<body>
+    z
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php'); ?>*@
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid">
+
+
+
+                <!-- If Business business_category is Venue -->
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <!-- <div class="col-12"> -->
+                            <div class="card-header d-sm-flex d-block">
+                                <div class="me-auto mb-sm-0 mb-3">
+                                    <h4>Venue Types</h4>
+                                </div>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
+                                        <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"></rect>
+                                                <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#config_add_modal" class="dropdown-item">Add Packages</a>
+                                        <a href="javascript:void(0);" target="_blank" class="dropdown-item">Edit Venue Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="display" style="min-width: 845px">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr No</th>
+                                                <th>Service Title</th>
+                                                <th>Service Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    config title 3 Updated
+                                                </td>
+                                                <td>
+                                                    3000
+                                                </td>
+                                                <td>
+                                                    <button class="config_data_btn btn btn-primary btn-xs px-2" data-config_tb_id="1" data-toggle="modal" data-target="#config_modal">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="config-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#config_delete_modal" data-config_tb_id="3">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- If Business business_category is Venue -->
+                <!-- Modal For Adding  Config Data Edit -->
+                <div id="config_add_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h4 class="modal-title">Add New Service </h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0">
+
+                                    <!-- <form id="config_data_add"> -->
+
+                                    <div class="row" id="config_add_modal_display">
+
+                                        <div class="col-lg-12 mb-2">
+                                            <h6 class="text-label">Service Details</h6>
+                                        </div>
+                                        <div class="col-lg-12 mb-0 addon-service">
+                                            <div class="form-group">
+                                                <input type="hidden" name="product_id">
+                                                <input type="hidden" name="service_type" value="1">
+                                                <input type="text" name="configution_title" id="config_title_add" required class="form-control mb-2" placeholder="Service Title">
+                                                <input type="text" name="conguration_amount" id="config_amount_add" required class="form-control" placeholder="Service Amount">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row m-0 justify-content-center">
+                                        <button type="submit" class="config_data_add_btn btn btn-primary btn-md m-2" id="add_field_venue">Add Package</button>
+                                        <button type="button" class="btn btn-danger btn-md m-2" data-dismiss="modal">Cancel</button>
+                                    </div>
+
+                                    <!-- </form> -->
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Adding  Config Data Edit -->
+                <!-- Modal For Deleting Config Data -->
+                <div id="config_delete_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-danger-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                                        <form id="config_data_delete_form">
+
+                                            <div class="col-lg-12 mb-0 addon-service" id="target_decorator">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="business_category" id="service_type1" value="1">
+                                                    <input type="hidden" name="product_delete_id" id="config_delete_id" value="" required class="form-control mb-2" placeholder="Title">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="config_data_delete_btn btn btn-danger btn-md" id="add_field_venue">Yes! Delete it.</button>
+                                                    <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Deleting Config Data -->
+                <!-- Modal For View of Config Data Edit -->
+                <div id="config_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h4 class="modal-title">Edit Service </h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0">
+                                    <form id="config_data_update">
+                                        <div class="row" id="config_modal_display">
+                                            <div class="col-lg-12 mb-2">
+                                                <h6 class="text-label">Configuration Details</h6>
+                                            </div>
+
+                                            <div class="col-lg-12 mb-0 addon-service">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="product_id" value="3">
+                                                    <input type="hidden" name="service_type" value="1">
+                                                    <input type="text" name="configution_title" value="config title 3 Updated" required="" class="form-control mb-2" placeholder="Configuration Title">
+                                                    <input type="text" name="conguration_amount" value="3000" required="" class="form-control" placeholder="Configufration Amount">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 justify-content-center">
+                                            <button type="submit" class="btn btn-primary btn-md m-2" id="add_field_venue">Update</button>
+                                            <button type="button" class="btn btn-danger btn-md m-2" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For View of Config Data Edit -->
+                <!-- If Business business_category is Decorator -->
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="col-12">
+                                <div class="card-header">
+                                    <h4 class="card-title">Decorator Packages</h4>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                                    <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                    <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                    <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#decorator_add_modal" class="dropdown-item"></i>Add Packages </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr No</th>
+                                                    <th>Package Name</th>
+                                                    <th>Package Price</th>
+                                                    <th>Package Image</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Testing1</td>
+                                                    <td>2000</td>
+                                                    <td>
+                                                        <a href="view-profile-img.php" target="_blank"><button class="btn-xs edit-image btn btn-primary btn-xs">Edit Image</button></a>
+                                                    </td>
+                                                    <td>
+                                                        <button class="dec_data_view_btn_show btn btn-primary btn-xs px-2" data-toggle="modal" data-target="#dec_modal" data-dec_tb_id="3" data-service_type="3">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="dec-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#decorator_delete_modal" data-dec_tb_id="3" data-service_type="3">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Testing</td>
+                                                    <td>1000</td>
+                                                    <td>
+                                                        <a href="javascript:void(0);"><button data-data_imgpack_id="4" data-toggle="modal" data-target="#img_add_modal" class="add-image btn btn-primary btn-xs">Add Images</button></a>
+                                                    </td>
+                                                    <td>
+                                                        <button class="dec_data_view_btn_show btn btn-primary btn-xs px-2" data-dec_tb_id="4" data-service_type="3">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" class="dec-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#decorator_delete_modal" data-dec_tb_id="4" data-service_type="3">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- <div class="col-lg-12 text-right mt-3"> <button type="button" class="btn btn-rounded btn-primary">Submit</button></div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- If Business business_category is Decorator -->
+                <!-- Modal For Adding Decorator Img -->
+                <div id="img_add_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Add Package Images</h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0">
+                                    <div class="row m-0">
+                                        <div class="col-lg-12">
+                                            <form id="img_add_form" method="POST" enctype="multipart/form-data">
+                                                <div class="drop-zone py-5 mx-2">
+                                                    <div class="col">
+                                                        <i class="fa fa-upload scale5"></i>
+                                                        <span class="drop-zone__prompt fs-6">Drop file here or click to upload</span>
+                                                        <input type="file" name="myFile" class="drop-zone__input">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Adding Decorator Img -->
+                <!-- Modal For Adding Decorator Data -->
+                <div id="decorator_add_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h4 class="modal-title">Add Decorator Package </h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0 text-center">
+
+
+                                    <form id="decorator_add_form">
+                                        <div class="row" id="decorator_add_modal_display">
+
+                                            <input type="hidden" id="service_type3" value="3">
+
+                                            <div class="col-lg-8 mb-0 addon-service" id="target_decorator">
+                                                <div class="form-group">
+                                                    <input type="text" name="dec_title[]" id="dec_title" class="form-control mb-2" placeholder="Title" required>
+                                                    <input type="number" name="dec_amount[]" id="dec_amount" class="form-control" placeholder="Amount" min="0" max="999999" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4" id="target_decorator">
+                                                <div class="drop-zone mx-2">
+                                                    <div class="col">
+                                                        <i class="fa fa-upload scale5"></i>
+                                                        <span class="drop-zone__prompt fs-6">Drop file here or click to upload</span>
+                                                        <input type="file" name="myFile" class="drop-zone__input">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row m-0 justify-content-center">
+                                            <button type="submit" class="dec_data_add_btn btn btn-primary btn-md m-2" id="add_field_venue">Upload</button>
+                                            <button type="button" class="btn btn-danger btn-md m-2" data-dismiss="modal">Cancel</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Adding Decorator Data -->
+                <!-- Modal For Deleting Decorator Data -->
+                <div id="decorator_delete_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-danger-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                                        <form>
+
+                                            <div class="col-lg-12 mb-0 addon-service" id="target_decorator">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="product_delete_id" id="dec_delete_id" value="" required class="form-control mb-2" placeholder="Title">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="dec_data_delete_btn btn btn-danger btn-lg" id="add_field_venue">Yes! Delete it.</button>
+                                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Deleting Decorator Data -->
+                <!-- Modal For Viewing Decorator Data -->
+                <div id="dec_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h4 class="modal-title">Edit Decorator Package </h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0 text-center">
+                                    <form id="decorator_package_update">
+                                        <div class="row" id="dec_modal_display">
+                                            <div class="col-lg-8 mb-0 addon-service">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="dec_update_id" id="dec_update_id" value="3" required="" class="form-control mb-2" placeholder="Title Place holder">
+                                                    <input type="text" name="dec_title" id="dec_title" value="Testing1" required="" class="form-control mb-2" placeholder="Title Place holder">
+                                                    <input type="text" name="dec_amount" id="dec_amount" value="2000" required="" class="form-control" placeholder="Amount placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4" id="target_decorator">
+                                                <div class="drop-zone mx-2">
+                                                    <div class="col">
+                                                        <i class="fa fa-upload scale5"></i>
+                                                        <span class="drop-zone__prompt fs-6">Drop file here or click to upload</span>
+                                                        <input type="file" name="myFile" class="drop-zone__input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 justify-content-center">
+                                            <button type="submit" class="dec_data_update_btn btn btn-primary menu-items btn-link btn-md m-2" id="add_field_venue">Update Package</button>
+                                            <button type="button" class="btn btn-danger text-white menu-items btn-link btn-md m-2" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Viewing Decorator Data -->
+
+
+                <div class="row Caterer-card">
+                    <div class="col-lg-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Catering Packages</h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- <p>Floor selected by the customer if the vender have multiple floor option</p> -->
+                                <div class="table-responsive caterer-table">
+                                    <table id="example3" class="display">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>Package Name</th>
+                                                <th>Package Price Per Person</th>
+                                                <th>Menu Type</th>
+                                                <th>Menu</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <!-- <td><input type="text" value="1" name="package_tb_id[]"></td> -->
+                                                <td>1</td>
+                                                <td>Package 1</td>
+                                                <td>₹ 600</td>
+                                                <td>Veg</td>
+                                                <td> <button type="button" class="package_menu_id btn menu-items btn-primary btn-sm" data-toggle="modal" data-target="#view-menu-modal"><span class="glyphicon glyphicon-plus"></span> View Menu</button></td>
+                                                <td>
+                                                    <button class="package_data_btn btn btn-primary btn-xs px-2" data-toggle="modal" data-target="#package_modal">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="config-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#config_delete_modal">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <!-- <td><input type="text" value="2" name="package_tb_id[]"></td> -->
+                                                <td>2</td>
+                                                <td>Package 2</td>
+                                                <td>₹ 600</td>
+                                                <td>Non Veg</td>
+                                                <td> <button type="button" class="package_menu_id btn menu-items btn-primary btn-sm" data-package_id="2" data-toggle="modal" data-target="#view-menu-modal"><span class="glyphicon glyphicon-plus"></span> View Menu</button></td>
+                                                <td>
+                                                    <button class="package_data_btn btn btn-primary btn-xs px-2" data-config_tb_id="1" data-service_type="2" data-toggle="modal" data-target="#package_modal">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="cat-pack-del ms-2 btn btn-xs px-2 btn-danger" data-toggle="modal" data-target="#config_delete_modal" data-config_tb_id="3">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal For View of Config Data Edit -->
+                <div id="config_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h4 class="modal-title">Edit Service </h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0">
+                                    <form id="config_data_update">
+                                        <div class="row" id="config_modal_display">
+                                            <div class="col-lg-12 mb-2">
+                                                <h6 class="text-label">Configuration Details</h6>
+                                            </div>
+
+                                            <div class="col-lg-12 mb-0 addon-service">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="product_id" value="3">
+                                                    <input type="hidden" name="service_type" value="1">
+                                                    <input type="text" name="configution_title" value="  config title 3 Updated" required="" class="form-control mb-2" placeholder="Configuration Title">
+                                                    <input type="text" name="conguration_amount" value="3000 " required="" class="form-control" placeholder="Configufration Amount">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 justify-content-center">
+                                            <button type="submit" class="btn btn-primary btn-md m-2" id="add_field_venue">Update</button>
+                                            <button type="button" class="btn btn-danger btn-md m-2" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For View of Config Data Edit -->
+                <!-- Modal For Deleting Caterer Data -->
+                <div id="caterer_package_delete_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-danger-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+
+                                        <form id="caterer_package_data_detele">
+
+                                            <div class="col-lg-12 mb-0 addon-service" id="target_caterer">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="product_delete_id" id="cat_pack_delete_id" value="" required class="form-control mb-2" placeholder="Title">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="cat_data_delete_btn btn btn-danger btn-lg" id="add_field_venue"><span class="glyphicon glyphicon-plus"></span>Yes! Delete it.</button>
+                                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-plus"></span>Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Deleting Caterer Data -->
+                <!-- Modal For View of Package Data Edit -->
+                <div id="package_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0">
+
+                                    <form id="caterer_package_update">
+
+                                        <div class="row" id="package_modal_display">
+                                            <div class="form-row col-xl-12 mb-5" id="fields_wrapper">
+                                                <div class="col-lg-12 mb-2">
+                                                    <div class="form-group">
+                                                        <h6 class="text-label">Package Name</h6>
+                                                        <input type="hidden" name="product_id" value="1">
+                                                        <input type="hidden" name="service_type" value="2">
+                                                        <input type="text" name="pack_name" class="form-control" value="Package 1" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="package name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-2">
+                                                    <div class="form-group">
+                                                        <h6 class="text-label">Price Per Plate</h6>
+                                                        <input type="text" name="price_per_plate" value="600" class="form-control" placeholder="price per plate">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-2">
+                                                    <div class="form-group">
+                                                        <h6 class="text-label">Menu Type</h6>
+                                                        <input type="text" name="menu_type" class="form-control" value="Veg" readonly="">
+                                                    </div>
+                                                </div>
+                                                <h6 class="text col-lg-12 mb-2">Select Menu Items</h6>
+                                                <div class="col-lg-12">
+                                                    <div class="row mb-2" id="menu-items-div">
+                                                        <div class="col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label class="text-label">Veg starter</label>
+                                                                <input type="hidden" class="form-control" value="veg starter">
+                                                                <input type="hidden" class="form-control" value="1">
+                                                                <input type="text" class="form-control" placeholder="Quantity" value="2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label class="text-label">Refreshment</label>
+                                                                <input type="hidden" class="form-control" value="Refreshment">
+                                                                <input type="hidden" class="form-control" value="2">
+                                                                <input type="text" class="form-control" placeholder="Quantity" value="5">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label class="text-label">Coldrinks</label>
+                                                                <input type="hidden" class="form-control" value="coldrinks">
+                                                                <input type="hidden" class="form-control" value="3">
+                                                                <input type="text" class="form-control" placeholder="Quantity" value="2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row m-0 text-center">
+                                            <div class="col-lg-12 mb-4">
+                                                <button type="submit" class="btn btn-success btn-lg" id="add_field_venue"><span class="glyphicon glyphicon-plus"></span>Update</button>
+                                                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-plus"></span>Cancel</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For View of Config Data Edit -->
+                <!-- Modal For Deleting Caterer Data -->
+                <div id="caterer_delete_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-danger-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                                        <form id="caterer_data_delete">
+
+                                            <div class="col-lg-12 mb-0 addon-service" id="target_caterer">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="product_delete_id" id="cat_delete_id" value="" required class="form-control mb-2" placeholder="Title">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="cat_data_delete_btn btn btn-primary btn-sm" id="add_field_venue">Yes! Delete it.</button>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Deleting Decorator Data -->
+                <!-- Modal For View of Caterer Menu Data Edit -->
+                <div id="menu_modal" class="modal fade bd-example-modal-sm show" data-keyboard="true" tabindex="-1" role="dialog" aria-modal="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h4 class="modal-title">Edit Menu Items </h4>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0 text-center">
+                                    <form id="caterer_menu_update">
+                                        <div class="row" id="menu_modal_display">
+                                            <div class="col-lg-12 mb-0 addon-service1">
+                                                <div class="form-group">
+                                                    <select name="menu_type" id="menu_type" class="form-control mb-2">
+                                                        <option value="Veg" selected="selected">Veg</option>
+                                                        <option value="Non Veg">Non-Veg</option>
+                                                        <option value="Both">Both</option>
+                                                    </select>
+                                                    <input type="hidden" name="product_id" value="1">
+                                                    <input type="hidden" name="service_type" value="2">
+                                                    <input type="hidden" name="catering_data" value="show_menu_data">
+                                                    <input type="text" name="items_name" value="veg starter" class="form-control mb-2" placeholder="Items Name">
+                                                    <input type="text" name="menu_option" value="Chapati, Sabzi, Daal, Chawal, Papad, Raita" class="form-control mb-2" placeholder="Menu Option">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row m-0">
+                                            <div class="col-lg-12 mb-4">
+                                                <button type="submit" class="btn btn-primary btn-md" id="add_field_venue">Update</button>
+                                                <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For View of Caterer Menu Data Edit -->
+                <!--Menu card-->
+                <div id="view-menu-modal" class="modal fade bd-example-modal-sm modal-reject-booking" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-1">
+                                <div class="card mb-0 text-black">
+                                    <div id="menu-package">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Package 1 : ₹600/Plate</h4>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Veg starter</span><strong>2</strong></li>
+                                            <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Refreshment</span><strong>5</strong></li>
+                                            <li class="list-group-item d-flex justify-content-between"><span class="mb-0">Coldrinks</span><strong>2</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link btn-sm" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Menu card-->
+                <!-- For Managing Monopoly -->
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="col-12">
+                                <div class="card-header">
+                                    <h4 class="card-title">Monopoly with Packages</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr No</th>
+                                                    <th>Monopoly Name</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Caterer</td>
+                                                    <td>
+                                                        <button type="button" data-action="Status" class="monopoly_button btn btn-success btn-xs" data-toggle="modal">
+                                                            Active
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" data-toggle="modal" data-action="Delete" data-service_tb_id="" class="monopoly_button ser-del ms-2 btn btn-xs px-2 btn-danger">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Decorator</td>
+                                                    <td>
+                                                        <button type="button" data-action="Status" class="monopoly_button btn btn-success btn-xs" data-toggle="modal">
+                                                            Active
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" data-toggle="modal" data-action="Delete" data-service_tb_id="" class="monopoly_button ser-del ms-2 btn btn-xs px-2 btn-danger">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>
+                                                        Music
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" disabled data-action="Status" class="monopoly_button btn btn-danger btn-xs" data-toggle="modal">
+                                                            Inactive
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <a href="add_monopoly?service_type=7" target="_blank" class="btn btn-primary btn-xs px-2">
+                                                            <i class="fa fa-plus color-info p-1"></i>
+                                                            <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                        </svg> -->
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- <div class="col-lg-12 text-right mt-3"> <button type="button" class="btn btn-rounded btn-primary">Submit</button></div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- For Managing Monopoly -->
+                <!-- Modal For Making Monopoly Status Active/Inactive or Delete -->
+                <div id="make_monopoly_status_change" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-danger-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                                        <form id="monopoly_status_change_form">
+
+                                            <div class="col-lg-12 mb-0 addon-service" id="target_decorator">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="action" id="action" value="">
+                                                    <input type="hidden" name="service_type" id="service_type" value="" required class="form-control mb-2" placeholder="Title">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="ser_data_delete_btn btn btn-primary btn-lg" id="add_field_venue">Yes!</button>
+                                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Making Monopoly Status Active/Inactive or Delete -->
+
+
+
+
+
+
+
+
+                <div id="success_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-success-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Success! </h2>
+                                        <p id="success_msg"> </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="error-modal" class="fade bd-example-modal-sm modal reject" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog  modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+
+                                <div style="display:block;" class="alert alert-danger notification m-0 text-center">
+
+                                    <div class="swal2-header text-center">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                                            <span class="swal2-x-mark">
+                                                <span class="swal2-x-mark-line-left"></span>
+                                                <span class="swal2-x-mark-line-right"></span>
+                                            </span>
+                                        </div>
+
+                                        <div class="swal2-icon swal2-question" style="display: none;">
+                                            <span class="swal2-icon-text">?</span>
+                                        </div>
+
+                                        <div class="swal2-icon swal2-warning" style="display: none;">
+                                            <span class="swal2-icon-text">!</span>
+                                        </div>
+
+                                        <div class="swal2-icon swal2-info" style="display: none;">
+                                            <span class="swal2-icon-text">i</span>
+                                        </div>
+
+                                        <div class="swal2-icon swal2-success" style="display: none;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-success-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Oops... </h2>
+                                        <button type="button" class="swal2-close" style="display: none;">×</button>
+
+                                    </div>
+
+                                    <p style="font-size:1rem;" id="error_msg"></p>
+
+                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+    </div>
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+<script src="~/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/js/plugins-init/datatables.init.js"></script>
+
+
+
+</html>
+

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "BookedDate";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Business Services</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="form_booked_date">
+                                    <div class="row mt-3" id="date_fields">
+                                        <div class="col-lg-12 mb-2">
+                                            <h6 class="text-label">Already Booked Date</h6>
+                                        </div>
+                                        <div class="col-lg-3 mb-0 addon-service">
+                                            <div class="form-group">
+                                                <input type="date" name="unavailable_dates[]" class="form-control mb-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-2">
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="add_date_venue"><span class="glyphicon glyphicon-plus"></span>Add Field</button>
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="remove_date_venue"><span class="glyphicon glyphicon-plus"></span>Remove Field</button>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;">
+                                        <a href="~/Badhaaiya/PaymentAdvance"><button class="btn btn-primary sw-btn-prev disabled" type="button">Previous</button></a>
+                                        <a href="~/Badhaaiya/ServiceDetails"><button class="btn btn-primary sw-btn-next" type="button">Next</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+  
+</html>
+

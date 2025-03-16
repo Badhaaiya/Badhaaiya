@@ -1,0 +1,261 @@
+﻿
+@{
+    ViewBag.Title = "ManageAvailability";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php'); ?>*@
+
+        <!--*******************
+        Preloader start
+    ********************-->
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+            </div>
+        </div>
+        <!--*******************
+        Preloader end
+    ********************-->
+
+        <div class="content-body">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <!-- <div class="col-12"> -->
+                            <div class="card-header d-sm-flex d-block">
+                                <div class="me-auto mb-sm-0 mb-3">
+                                    <h4 class="card-title">Manage Availability</h4>
+                                </div>
+                                <!-- <div class="dropdown">
+                                <button type="button" class="btn btn-primary light sharp" data-toggle="dropdown">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#date_add_modal" class="dropdown-item">Add </a>
+                                </div>
+                            </div> -->
+                                <button type="button" class="btn btn-primary btn-info" data-toggle="modal" data-target="#date_add_modal">Add</button>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr No</th>
+                                                <th>Unavailable Dates</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    26-01-2024 <input type="hidden" id="date_del_id" value="6">
+                                                </td>
+
+                                                <td>
+                                                    <button class="date-del ms-2 btn btn-xs px-2 btn-danger" data-date_delete_id="6" data-toggle="modal" data-target="#date_delete_modal">
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3 6H5H21" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal For Add Date -->
+                <div id="date_add_modal" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header mb-2">
+                                <h5 class="modal-title">Add Unavailable Date </h5>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="alert notification m-0">
+                                    <div class="row" id="services_add_modal_display">
+                                        <div class="col-lg-12 mb-0 addon-service">
+                                            <form id="date_data_add_btn" method="POST" enctype="multipart/form-data">
+                                                <h6 class="text-label">Select Date</h6>
+                                                <div class="input-group date form-group" id="datepicker">
+                                                    <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Add DAte -->
+                <!-- Modal For Deleting Config Data -->
+                <div id="date_delete_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="alert alert-light notification m-0 text-center">
+                                    <div class="swal2-header">
+                                        <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                        <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                        <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                        <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                        <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                            <span class="swal2-danger-line-tip"></span>
+                                            <span class="swal2-success-line-long"></span>
+                                            <div class="swal2-success-ring"></div>
+                                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                            <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                        </div>
+                                        <img class="swal2-image" style="display: none;">
+                                        <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are You Sure? </h2>
+                                        <form id="date_data_delete_form">
+
+                                            <div class="col-lg-12 mb-0 addon-service" id="target_decorator">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="date_delete_id" id="date_delete_id" value="" required class="form-control mb-2" placeholder="Title">
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-12 mb-4">
+                                                    <button type="submit" class="date_data_delete_btn btn btn-primary btn-sm" id="add_field_date"><span class="glyphicon glyphicon-plus"></span>Yes! Delete it.</button>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><span class="glyphicon glyphicon-plus"></span>Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal For Deleting Config Data -->
+
+
+
+            </div>
+        </div>
+
+        <div id="success_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="alert alert-light notification m-0 text-center">
+                            <div class="swal2-header">
+                                <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                    <span class="swal2-success-line-tip"></span>
+                                    <span class="swal2-success-line-long"></span>
+                                    <div class="swal2-success-ring"></div>
+                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                </div>
+                                <img class="swal2-image" style="display: none;">
+                                <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Success! </h2>
+                                <p id="success_msg"></p>
+                                <!--<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error-modal" class="fade bd-example-modal-sm modal reject" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog  modal-md  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div style="display:block;" class="alert alert-danger notification m-0 text-center">
+                            <div class="swal2-header text-center">
+                                <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                                    <span class="swal2-x-mark">
+                                        <span class="swal2-x-mark-line-left"></span>
+                                        <span class="swal2-x-mark-line-right"></span>
+                                    </span>
+                                </div>
+                                <div class="swal2-icon swal2-question" style="display: none;">
+                                    <span class="swal2-icon-text">?</span>
+                                </div>
+                                <div class="swal2-icon swal2-warning" style="display: none;">
+                                    <span class="swal2-icon-text">!</span>
+                                </div>
+                                <div class="swal2-icon swal2-info" style="display: none;">
+                                    <span class="swal2-icon-text">i</span>
+                                </div>
+                                <div class="swal2-icon swal2-success" style="display: none;">
+                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                    <span class="swal2-success-line-tip"></span>
+                                    <span class="swal2-success-line-long"></span>
+                                    <div class="swal2-success-ring"></div>
+                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                </div>
+                                <img class="swal2-image" style="display: none;">
+                                <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Oops... </h2>
+                                <button type="button" class="swal2-close" style="display: none;">×</button>
+                            </div>
+                            <p style="font-size:1rem;" id="error_msg"></p>
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+
+</body>
+
+
+</html>
+

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "ViewAgreement";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php'); ?>*@
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Agreement Copy</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <object class="d-sm-none d-none d-md-block d-lg-block" type="application/pdf" data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" style="height: 90vh;width: 100%"></object>
+                                <object class="d-lg-none d-xs-block d-sm-block" data="https://docs.google.com/gview?embedded=true&url=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" style="height: 90vh;width: 100%"></object>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+
+</html>

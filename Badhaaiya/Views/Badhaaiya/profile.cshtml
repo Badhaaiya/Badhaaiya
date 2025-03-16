@@ -1,0 +1,358 @@
+﻿
+@{
+    ViewBag.Title = "complete_profile";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<script src="~/js/profile.js"></script>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php') ?>*@
+        <!--
+            Content body start
+        -->
+        <div class="content-body">
+            <div class="container-fluid">
+                <!-- Add Project -->
+                <div class="modal fade" id="addProjectSidebar">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create Project</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label class="text-black font-w500">Project Name</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-black font-w500">Deadline</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-black font-w500">Client Name</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary">CREATE</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Complete Your Business Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="smartwizard" class="form-wizard order-create">
+                                    <ul class="nav nav-wizard">
+                                        <li>
+                                            <a class="nav-link" href="#wizard_one">
+                                                <span>1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#wizard_two">
+                                                <span>2</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#wizard_three">
+                                                <span>3</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="wizard_one" class="tab-pane" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Badhaaiya Vendor ID </label>
+                                                        <input type="text" class="form-control" value="BV3142" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Name Of Business / Organization <span>*</span></label>
+                                                        <input type="text" class="form-control" placeholder="Royal Touch Decorator" id="nameofbusiness"  required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Email Address <span>*</span></label>
+                                                        <input type="email" class="form-control" placeholder="example@email.com" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Mobile Number <span>*</span></label>
+                                                        <input type="tel" class="form-control" placeholder="12345 67890" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Date of Incorporation <span>*</span></label>
+                                                        <input type="date" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">GSTIN</label>
+                                                        <input type="text" class="form-control" placeholder="Enter GSTIN Number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-9 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Registered Address <span>*</span></label>
+                                                        <div class="row">
+                                                            <div class="col-lg-4">
+                                                                <input type="text" class="form-control" placeholder="Shop, Building or Flat" required>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <input type="text" class="form-control" placeholder="Area" required>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <input type="text" class="form-control" placeholder="City" required>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <input type="text" class="form-control" placeholder="Pincode" required>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">
+                                                            PAN <span>*</span><button class="btn p-0 color-primary" data-toggle="dropdown"><i class="mdi mdi-information-outline icon-info-sign"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-left color-primary bg-primary-light p-1">
+                                                                <p class="color-primary fs-6 px-1 mb-0">PAN No. is mandatory for TDS compliance</p>
+                                                            </div>
+                                                        </label>
+                                                        <input type="text" class="form-control" placeholder="Enter PAN Card Number" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="wizard_two" class="tab-pane" role="tabpanel">
+
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Business Category <span>*</span></label>
+                                                        <select class="form-control" name="business_category" id="businessCategoryDropdown">
+                                                            <!-- Dynamic Options -->
+                                                        </select>
+                                                        @*<select class="form-control" name="vategory">
+                                                            <option value="" disabled selected hidden>Select Category</option>
+                                                            <option value="1">Venue</option>
+                                                            <option value="2">Decorator</option>
+                                                            <option value="3">Cateror</option>
+                                                            <option value="4">Photographer</option>
+                                                            <option value="5">Music</option>
+                                                            <option value="6">Makeup Artist</option>
+                                                            <option value="7">Mehndi Artist</option>
+                                                            <option value="8">Host</option>
+                                                            <option value="9">Magician</option>
+                                                        </select>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Business Sub-Category <span>*</span></label>
+                                                        <select class="form-control selectpicker" name="business_sub_category[]" multiple data-live-search="true">
+                                                            <option value="" disabled selected hidden>--Select--</option>
+                                                            <option value="">Banquet Hall</option>
+                                                            <option value="">Farm House</option>
+                                                            <option value="">Lawn</option>
+                                                            <option value="">Hotel</option>
+                                                            <option value="">Resort</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Type Of Business <span>*</span></label>
+                                                        <select class="form-control selectpicker" name="business_fields[]" multiple data-live-search="true">
+                                                            <option value="" disabled selected hidden>--Select--</option>
+                                                            <option value="">Birthday</option>
+                                                            <option value="">Corporate</option>
+                                                            <option value="">Events</option>
+                                                            <option value="">Anniversary</option>
+                                                            <option value="">Engagement</option>
+                                                            <option value="">Baby Shower</option>
+                                                            <option value="">Party</option>
+                                                            <option value="">Festival</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Service Country <span>*</span></label>
+                                                        <select class="form-control" name="country" id="country">
+                                                            <option value="" disabled selected hidden>Select Country</option>
+                                                            <option value="India">India</option>
+                                                            <option value="US">US</option>
+                                                            <option value="UAE">UAE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Service State <span>*</span></label>
+                                                        <select class="form-control" name="country" id="country">
+                                                            <option value="" disabled selected hidden>Select State</option>
+                                                            <option value="India">Maharashtra</option>
+                                                            <option value="US">Delhi</option>
+                                                            <option value="UAE">Kolkata</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Service City <span>*</span></label>
+                                                        <select class="form-control" name="country" id="country">
+                                                            <option value="" disabled selected hidden>Select City</option>
+                                                            <option value="India">Mumbai</option>
+                                                            <option value="US">Delhi</option>
+                                                            <option value="UAE">Kolkata</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Service Locality <span>*</span></label>
+                                                        <select class="form-control" name="country" id="country">
+                                                            <option value="" disabled selected hidden>Select</option>
+                                                            <option value="India">Mulund</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div id="wizard_three" class="tab-pane" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Add Business Photos <span>*</span></label>
+                                                        <input type="file" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="text-label">Description of your Business <span>*</span></label>
+                                                        <br>
+                                                        <textarea name="description" rows="15"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 mb-2">
+                                                    <div class="form-group">
+                                                        <button type="button" class="btn btn-success" id="btnSubmit">Submit</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        @*<div id="wizard_Payment" class="tab-pane" role="tabpanel">
+                                            <div class="row emial-setup">
+                                                <div class="col-lg-3 col-sm-6 col-6">
+                                                    <div class="form-group">
+                                                        <label for="mailclient11" class="mailclinet mailclinet-gmail">
+                                                            <input type="radio" name="emailclient" id="mailclient11">
+                                                            <span class="mail-icon">
+                                                                <i class="mdi mdi-google-plus" aria-hidden="true"></i>
+                                                            </span>
+                                                            <span class="mail-text">I'm using Gmail</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-sm-6 col-6">
+                                                    <div class="form-group">
+                                                        <label for="mailclient12" class="mailclinet mailclinet-office">
+                                                            <input type="radio" name="emailclient" id="mailclient12">
+                                                            <span class="mail-icon">
+                                                                <i class="mdi mdi-office" aria-hidden="true"></i>
+                                                            </span>
+                                                            <span class="mail-text">I'm using Office</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-sm-6 col-6">
+                                                    <div class="form-group">
+                                                        <label for="mailclient13" class="mailclinet mailclinet-drive">
+                                                            <input type="radio" name="emailclient" id="mailclient13">
+                                                            <span class="mail-icon">
+                                                                <i class="mdi mdi-google-drive" aria-hidden="true"></i>
+                                                            </span>
+                                                            <span class="mail-text">I'm using Drive</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-sm-6 col-6">
+                                                    <div class="form-group">
+                                                        <label for="mailclient14" class="mailclinet mailclinet-another">
+                                                            <input type="radio" name="emailclient" id="mailclient14">
+                                                            <span class="mail-icon">
+                                                                <i class="fas fa-question-circle" aria-hidden="true"></i>
+                                                            </span>
+                                                            <span class="mail-text">Another Service</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="skip-email text-center">
+                                                        <p>Or if want skip this step entirely and setup it later</p>
+                                                        <a href="javascript:void(0)">Skip step</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+            Content body end
+        -->
+    </div>
+
+
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+
+</html>
+

@@ -1,0 +1,402 @@
+﻿@model Badhaaiya.Models.BookingViewModel
+@{
+    ViewBag.Title = "ViewBookingDeatils";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php'); ?>*@
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="form-head mb-sm-3 mb-3 d-flex flex-wrap align-items-center">
+                    <h2 class="font-w600 title mb-0 mr-auto">Booking Details</h2>
+                </div>
+
+                <!--customer details-->
+                <div class="row">
+                    <!--customer details end-->
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="card user-card">
+                            <div class="card-body pb-0">
+                                <h4 class="card-title">Customer Details</h4>
+                                <div class="d-flex mb-3 align-items-center">
+                                    <div class="dz-media mr-3">
+                                        <img src="https://img.freepik.com/free-icon/man_318-188918.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <h5 class="title"><a href="javascript:void(0);">@Model.Name</a></h5>
+                                        <!-- <span class="text-primary">Senior Developer</span> -->
+                                    </div>
+                                </div>
+                                <!-- <p class="fs-12">Answering guest inquiries, directing phone calls, coordinating travel plans, and more.</p> -->
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <span class="mb-0 title">Email</span> :
+                                        <span class="text-black ml-2">@Model.Email</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="mb-0 title">Phone</span> :
+                                        <span class="text-black ml-2">@Model.MobileNo</span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <!-- <a href="javascript:void(0);" class="btn btn-success btn-xs">Write Message</a> -->
+                                <ul class="portofolio-social">
+                                    <li><a href="tel:1234567890" class="d-flex justify-content-center align-items-center"><i class="fa fa-phone"></i></a></li>
+                                    <li><a href="mailto:test@gmail.com" class="d-flex justify-content-center align-items-center"><i class="fa fa-envelope-o"></i></a></li>
+                                    <li><a href="https://wa.me/911234567890" class="d-flex justify-content-center align-items-center"><i class="fa fa-whatsapp"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--payment details-->
+
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="widget-stat card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">Payment Details</h4>
+                            </div>
+                            <div class="card-body  p-4">
+                                <div class="widget-timeline dz-scroll style-1">
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="timeline-badge warning"></div>
+                                            <a class="timeline-panel text-muted" href="#">
+                                                <span>
+                                                    <h6>Total Amount</h6>
+                                                </span>
+                                                <strong class="text-dark">₹ 3,000</strong>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge success">
+                                            </div>
+                                            <a class="timeline-panel text-muted" href="#">
+                                                <span>
+                                                    <h6>Paid Amount</h6>
+                                                </span>
+                                                <strong class="text-dark">₹ 1,000</strong>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge danger">
+                                            </div>
+                                            <a class="timeline-panel text-muted" href="#">
+                                                <span>
+                                                    <h6>Balance Amount</h6>
+                                                </span>
+                                                <strong class="text-dark">₹ 2,000</strong>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- payment details end-->
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="text-lable"> Booking Details </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="table-responsive col-lg-6">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Booking No.</td>
+                                                    <td class="text-primary">@Model.BookingId</td>
+                                                </tr>
+
+                                                <tr>
+
+                                                    <td>Date of Booking</td>
+                                                    <td>@Model.BookingDate</td>
+
+                                                <tr>
+                                                    <td>Date of Event</td>
+                                                    <td>26-Jan-2024</td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td>Booking Package</td>
+                                                    <td>Decorater</td>
+
+                                                </tr>
+
+                                                <tr>
+
+                                                    <td>Booking Type</td>
+                                                    <td>
+                                                        <span class="badge light badge-warning">
+                                                            <i class="fa fa-circle text-warning"></i>
+                                                            @Model.BookingType
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="table-responsive col-lg-6">
+                                        <table class="table table-striped ">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>No. of guests</td>
+                                                    <td>100</td>
+
+                                                </tr>
+
+                                                <tr>
+
+                                                    <td>Booking Status</td>
+                                                    <td>
+                                                        <span class="badge light badge-success">
+                                                            <i class="fa fa-circle text-success"></i>
+                                                            @Model.BookingStatus
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Service Location</td>
+                                                    <td>@Model.ServiceLocation</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-12 text-right">
+                                        <button class="btn btn-success accept-booking-btn" data-toggle="modal" data-target="#accept_alert" data-booking-id="Mg==">Accept Booking</button>
+                                        <button class="btn btn-danger reject-booking-btn" data-toggle="modal" data-target="#reject_alert" data-booking-id="Mg==">Reject Booking</button>
+                                        <!--<button type="button" class="btn btn-success" href="#" data-toggle="modal" data-target=".accept">-->
+                                        <!--    Accept-->
+                                        <!--</button>-->
+                                        <!--<button type="button" class="btn btn-danger" href="#" data-toggle="modal" data-target=".reject">Reject</button>-->
+                                    </div>
+
+
+
+                                    <!-- modal-accept-booking-->
+                                    <div id="accept_alert" class="modal fade bd-example-modal-sm" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-md modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-0">
+                                                    <div class="alert alert-light notification m-0 text-center">
+
+                                                        <div class="swal2-header">
+                                                            <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                                            <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                                            <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                                            <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                                            <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                                            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                                                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <span class="swal2-success-line-tip"></span>
+                                                                <span class="swal2-success-line-long"></span>
+                                                                <div class="swal2-success-ring"></div>
+                                                                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                                            </div>
+                                                            <img class="swal2-image" style="display: none;">
+                                                            <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Are you sure? </h2>
+                                                            <button type="button" class="swal2-close" style="display: none;">×</button>
+
+                                                            <p>Click on the accept button to confirm the booking.</p>
+                                                            <form id="acceptBooking">
+                                                                <input type="hidden" name="booking_id" id="booking_id" value="">
+                                                                <input type="hidden" name="booking_status" id="booking_status" value="2">
+                                                                <button type="submit" class="btn btn-primary btn-md">Yes! Accept it.</button>
+                                                                <button type="btn" class="btn btn-danger btn-md" data-dismiss="modal">Close</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- modal-accept-booking-->
+                                    <!-- modal-reject-booking-->
+                                    <div id="reject_alert" class="modal fade bd-example-modal-sm modal-reject-booking" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-md modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-0">
+                                                    <div class="alert alert-danger notification m-0 text-center">
+
+                                                        <div class="swal2-header text-center">
+                                                            <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                                            <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                                                                <span class="swal2-x-mark">
+                                                                    <span class="swal2-x-mark-line-left"></span>
+                                                                    <span class="swal2-x-mark-line-right"></span>
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-question" style="display: none;">
+                                                                <span class="swal2-icon-text">?</span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-warning" style="display: none;">
+                                                                <span class="swal2-icon-text">!</span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-info" style="display: none;">
+                                                                <span class="swal2-icon-text">i</span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-success" style="display: none;">
+                                                                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <span class="swal2-success-line-tip"></span>
+                                                                <span class="swal2-success-line-long"></span>
+                                                                <div class="swal2-success-ring"></div>
+                                                                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                                            </div>
+
+                                                            <img class="swal2-image" style="display: none;">
+                                                            <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Oops... </h2>
+                                                            <button type="button" class="swal2-close" style="display: none;">×</button>
+                                                            <p>Click on the reject button to cancel the booking.</p>
+                                                            <form id="rejectBooking">
+                                                                <input type="hidden" name="booking_id" id="reject_booking_id" value="">
+                                                                <input type="hidden" name="booking_status" id="booking_status" value="0">
+                                                                <button type="submit" class="btn btn-primary btn-md">Yes! Reject it.</button>
+                                                                <button type="btn" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+                                                                <!-- <button class="btn btn-danger btn-sm">Confirm</button>
+                                                                <button class="btn btn-link btn-sm" data-dismiss="modal">Cancel</button> -->
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- modal-reject-booking-->
+                                    <!-- Sucess Message Modal -->
+                                    <div id="success_modal" class="fade bd-example-modal-sm modal accept" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-md  modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-0">
+                                                    <div class="alert alert-light notification m-0 text-center">
+
+                                                        <div class="swal2-header">
+                                                            <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                                            <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+                                                            <div class="swal2-icon swal2-question" style="display: none;"><span class="swal2-icon-text">?</span></div>
+                                                            <div class="swal2-icon swal2-warning" style="display: none;"><span class="swal2-icon-text">!</span></div>
+                                                            <div class="swal2-icon swal2-info" style="display: none;"><span class="swal2-icon-text">i</span></div>
+                                                            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                                                                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <span class="swal2-success-line-tip"></span>
+                                                                <span class="swal2-success-line-long"></span>
+                                                                <div class="swal2-success-ring"></div>
+                                                                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                                            </div>
+                                                            <img class="swal2-image" style="display: none;">
+                                                            <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Success! </h2>
+                                                            <p id="sucess_msg"></p>
+                                                            <!--<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Sucess Message Modal -->
+                                    <!-- Error Message Modal -->
+                                    <div id="error-modal" class="fade bd-example-modal-sm modal reject" data-keyboard="true" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog  modal-md  modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-0">
+
+                                                    <div style="display:block;" class="alert alert-danger notification m-0 text-center">
+
+                                                        <div class="swal2-header text-center">
+                                                            <ul class="swal2-progresssteps" style="display: none;"></ul>
+                                                            <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                                                                <span class="swal2-x-mark">
+                                                                    <span class="swal2-x-mark-line-left"></span>
+                                                                    <span class="swal2-x-mark-line-right"></span>
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-question" style="display: none;">
+                                                                <span class="swal2-icon-text">?</span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-warning" style="display: none;">
+                                                                <span class="swal2-icon-text">!</span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-info" style="display: none;">
+                                                                <span class="swal2-icon-text">i</span>
+                                                            </div>
+
+                                                            <div class="swal2-icon swal2-success" style="display: none;">
+                                                                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <span class="swal2-success-line-tip"></span>
+                                                                <span class="swal2-success-line-long"></span>
+                                                                <div class="swal2-success-ring"></div>
+                                                                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                                            </div>
+
+                                                            <img class="swal2-image" style="display: none;">
+                                                            <h2 class="notificaiton-title" id="swal2-content" style="display: block;">Oops... </h2>
+                                                            <button type="button" class="swal2-close" style="display: none;">×</button>
+
+                                                        </div>
+                                                        <p style="font-size:1rem;" id="error_msg"></p>
+                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Error Message Modal -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+<!--**********************************
+            Content body end
+        ***********************************-->
+</div>
+
+<div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+
+</html>
+

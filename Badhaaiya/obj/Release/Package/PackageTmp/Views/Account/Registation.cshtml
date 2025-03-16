@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<script src="~/Scripts/bootstrap.bundle.min.js"></script>
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="authincation h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+
+                                    <div class="text-center mb-3">
+                                        <img class="img-fluid" src="@Url.Content("~/images/logo.png")" alt="">
+
+                                    </div>
+
+                                    <h4 class="text-center mb-4">Sign up</h4>
+
+                                    <form id="vendor_signup" method="post">
+
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Mobile Number</strong></label>
+                                            <input type="number" name="phone" id="phone" class="form-control" placeholder="Enter your number">
+                                            <input type="hidden" name="page_type" id="page_type" class="form-control" value="register">
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="button" tabindex="1" id="mob_num" class="btn btn-primary btn-block send-otp-btn" disabled>
+                                                Send OTP
+                                            </button>
+                                        </div>
+
+                                        <div class="verify-otp">
+
+                                            <div class="form-group">
+                                                <label class="mb-1"><strong>Enter OTP</strong></label>
+                                                <input type="number" name="otp" id="otp" class="form-control" placeholder="Enter your OTP">
+                                            </div>
+
+                                            <div class="text-right mb-3" id="resend">
+                                                <p>
+                                                    Not received your code? <button type="button" class="text-primary" id="resend_otp" disabled>
+                                                        Resend OTP
+                                                    </button><small id="otp_timer">
+                                                        (<span id="resend_otp_timer">60</span>sec)
+                                                    </small>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="button" tabindex="2" id="verify_otp" class="btn btn-primary btn-block verify-otp-btn" disabled>
+                                                    Verify OTP
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="register">
+
+                                            <div class="form-group">
+                                                <label class="mb-1"><strong>Full Name</strong></label>
+                                                <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full Name" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="mb-1"><strong>Email Address</strong></label>
+                                                <input type="email" name="email_address" id="email_address" class="form-control" placeholder="Email Address" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="mb-1"><strong>New Password</strong></label>
+                                                <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Enter Password" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="mb-1"><strong>Confirm Password</strong></label>
+                                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Enter Password" required>
+                                            </div>
+
+                                            <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox ml-1">
+                                                        <input type="checkbox" value="1" name="terms_conditions" class="custom-control-input" id="basic_checkbox_1">
+                                                        <label class="custom-control-label" for="basic_checkbox_1">
+                                                            By continuing, you agree to Badhaaiya's <a href="##" style="color: var(--primary);">
+                                                                <strong>
+                                                                    Terms and Conditions
+                                                                </strong>
+                                                            </a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="text-center mt-4">
+                                                <button type="submit" tabindex="3" id="register_vendor01" class="btn btn-primary btn-block">
+                                                    Sign me up
+                                                </button>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                    <div class="new-account mt-3">
+                                        <p>Already have an account? <a class="text-primary" href="~/Account/Login">Sign in</a></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+<div class="qweqr">@RenderPage("~/Views/Shared/_footerlink.cshtml")</div>
+
+</html>
+
+<script src="~/js/Registation.js"></script>
+
+
+
+@*<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #f8f9fa;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .register-container {
+                background: #fff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+                width: 400px;
+            }
+
+                .register-container h2 {
+                    margin-bottom: 20px;
+                    font-size: 24px;
+                    color: #343a40;
+                }
+
+                .register-container input {
+                    margin-bottom: 10px;
+                }
+
+                .register-container .btn-primary {
+                    width: 100%;
+                }
+
+                .register-container a {
+                    display: block;
+                    margin-top: 10px;
+                    text-align: center;
+                    color: #007bff;
+                    text-decoration: none;
+                }
+
+                    .register-container a:hover {
+                        text-decoration: underline;
+                    }
+        </style>
+    </head>
+    <body>
+        <div class="register-container">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="FullName">Full Name:</label>
+                    <input type="text" id="FullName" name="FullName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="MobileNumber">Mobile Number:</label>
+                    <input type="text" id="MobileNumber" name="MobileNumber" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email:</label>
+                    <input type="email" id="Email" name="Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password:</label>
+                    <input type="password" id="Password" name="Password" class="form-control" />
+                </div>
+                <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+                <a href="/Account/Login">Already have an account? Login</a>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function register() {
+                // Your registration logic here
+            }
+        </script>
+    </body>
+    </html>*@

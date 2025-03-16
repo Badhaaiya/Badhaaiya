@@ -1,0 +1,238 @@
+﻿
+@{
+    ViewBag.Title = "Monopoly";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div id="main-wrapper">
+        @*<?php include('sidebar.php') ?>*@
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Business Services</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-5">
+                                        <h6 class="text-label">Do you allow third-party Caterers?</h6>
+                                        <div class="mt-4">
+                                            <input type="radio" name="allow_caterer_button" class="radio_button" value="1" id="yes_allow_caterer_radio">&nbsp; Yes &nbsp;
+                                            <input type="radio" name="allow_caterer_button" class="radio_button" value="0" id="no_allow_caterer_radio" checked="">&nbsp; No
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-5">
+                                        <h6 class="text-label">Do you allow third-party Decorators?</h6>
+                                        <div class="mt-4">
+                                            <input type="radio" name="allow_decorater_button" class="radio_button" value="1" id="yes_allow_decorater_radio">&nbsp; Yes &nbsp;
+                                            <input type="radio" name="allow_decorater_button" class="radio_button" value="0" id="no_allow_decorater_radio" checked="">&nbsp; No
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <form class="form_monopoly">
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-6">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Monopoly</h6>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="monopoly[]" value="2" class="form-check-input" id="Caterer-check">
+                                                    <label class="form-check-label" for="customCheckBox1">Caterer</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="monopoly[]" value="3" class="form-check-input" id="Decorator-check">
+                                                    <label class="form-check-label" for="customCheckBox1">Decorator</label>
+                                                </div>
+                                                <div class="form-check custom-checkbox form-check-inline mb-3">
+                                                    <input type="checkbox" name="monopoly[]" value="7" class="form-check-input" id="Music-check">
+                                                    <label class="form-check-label" for="customCheckBox2">Music</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- If Business Category is Venue -->
+                                    <!-- If Business Category is Monopoly with Caterer  -->
+                                    <div class="row caterer m-0" style="">
+
+                                        <h4 class=" col-lg-12 mb-3">Caterer</h4>
+
+
+                                        <div class="col-lg-12 mb-2 ">
+                                            <div class="form-group">
+                                                <label class="text-label">Caterer Name</label>
+                                                <input type="text" name="caterer_monopoly_org_name" class="form-control" placeholder="Eg. Delicious caterers" required="">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-lg-3 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Veg Price per plate minimum</label>
+                                                <input type="number" name="vegprice_per_perplate" class="form-control" placeholder="No. of pax" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Non-Veg Price per plate</label>
+                                                <input type="number" name="nonvegprice_perplate" class="form-control" placeholder="No. of pax" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Minimum Serving Capacity</label>
+                                                <input type="number" name="minimum_serving_cap" class="form-control" placeholder="eg. 100" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Maximum Serving Capacity</label>
+                                                <input type="number" name="maximum_serving_cap" class="form-control" placeholder="eg. 500" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Upload food photos</label>
+                                                <input type="file" name="menu_images[]" multiple="" class="form-control" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row caterer m-0 mt-3" id="target_caterer" style="">
+
+                                        <div class="col-lg-12 mb-2">
+                                            <h6 class="text-label">Menu Items</h6>
+                                        </div>
+
+                                        <div class="col-lg-3 mb-0 addon-service1">
+                                            <div class="form-group">
+                                                <select name="menu_type[]" id="menu_type" class="form-control mb-2" required="">
+                                                    <option value="Veg">Veg</option>
+                                                    <option value="Non Veg">Non-Veg</option>
+                                                    <option value="Both">Both</option>
+                                                </select>
+                                                <label class="text-label">Menu Name</label>
+                                                <input type="text" name="items_name[]" class="form-control mb-2" placeholder="Eg. Main Course" required="">
+                                                <label class="text-label">Menu Food</label>
+                                                <input type="text" name="menu_option[]" class="form-control" placeholder="Eg.Chapati, Dal, Chawal" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row caterer m-0" style="">
+                                        <div class="col-lg-12 mb-2">
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="add_field_caterer"><span class="glyphicon glyphicon-plus"></span>Add Item</button>
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="remove_field_caterer"><span class="glyphicon glyphicon-plus"></span>Remove Item</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- If Business Category is Monopoly with Caterer  -->
+                                    <!-- If Business Category is Monopoly with Decorator  -->
+                                    <div class="row decorator m-0" style="">
+
+                                        <h4 class=" col-lg-12 mb-3">Decorator</h4>
+
+                                        <div class="col-lg-12 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Organization Name</label>
+                                                <input type="text" name="decorator_monopoly_org_name" class="form-control" placeholder="eg. Royal Touch Decorator" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row decorator m-0" id="target_decorator" style="">
+
+                                        <div class="col-lg-3 mb-0 addon-service">
+                                            <div class="form-group">
+                                                <input type="text" name="dec_title[]" class="form-control mb-2" placeholder="Service Title" required="">
+                                                <input type="number" name="dec_amount[]" class="form-control" placeholder="Amount" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row decorator m-0" style="">
+                                        <div class="col-lg-12 mb-2">
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="add_field_decorator"><span class="glyphicon glyphicon-plus"></span>Add Package</button>
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="remove_field_decorator"><span class="glyphicon glyphicon-plus"></span>Remove Package</button>
+                                        </div>
+                                    </div>
+                                    <!-- If Business Category is Monopoly with Decorator  -->
+                                    <!-- If Business Category is Monopoly with Music  -->
+                                    <div class="row music m-0" style="">
+
+                                        <h4 id="category-txt" class="col-lg-12 mb-3">Music</h4>
+
+
+                                        <div class="col-lg-12 mb-2">
+                                            <div class="form-group">
+                                                <label class="text-label">Organization Name</label>
+                                                <input type="text" name="music_monopoly_org_name" class="form-control" placeholder="eg. DJ Sherwin" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row music m-0" id="target_otherservices" style="">
+
+                                        <div class="col-lg-3 mb-0 addon-service">
+                                            <div class="form-group">
+                                                <input type="text" name="title[]" class="form-control mb-2" placeholder="Service Title" required="">
+                                                <input type="number" name="amount[]" class="form-control" placeholder="Amount " required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row music m-0" style="">
+                                        <div class="col-lg-12 mb-2">
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="add_field_otherservices"><span class="glyphicon glyphicon-plus"></span>Add Package</button>
+                                            <button type="button" class="btn menu-items btn-link btn-sm" id="remove_field_otherservices"><span class="glyphicon glyphicon-plus"></span>Remove Package</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;">
+                                        <a href="~/Badhaaiya/ServiceDetails"><button class="btn btn-primary sw-btn-prev disabled" type="button">Previous</button></a>
+                                        <a href=""><button class="btn btn-primary sw-btn-next" type="button">Submit</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+
+
+</html>
+

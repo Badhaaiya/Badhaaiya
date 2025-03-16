@@ -1,0 +1,108 @@
+﻿<html lang="en">
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+<body>
+
+    <div class="authincation h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+                                    <div class="text-center mb-3">
+                                        <img class="img-fluid" src="@Url.Content("~/images/logo.png")" alt="">
+                                    </div>
+                                    <h4 class="text-center mb-4">Sign in your account</h4>
+                                    <form id="loginForm" method="post" action="/Account/Login">
+                                        <!-- Added id, method, and action -->
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Mobile Number</strong></label>
+                                            <input type="number" name="phone" id="phone" class="form-control" value=""
+                                                   placeholder="Enter your number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Password</strong></label>
+                                            <input type="password" name="pass" id="pass" class="form-control" value=""
+                                                   placeholder="Enter your password">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" id="login" onclick="userlogin()" class="btn btn-primary btn-block send-otp-btn">
+                                                Login
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div class="new-account mt-3">
+                                        <p>
+                                            Don't have an account? <a class="text-primary" href="~/Account/Registation">Sign up</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success and Error modals here -->
+
+</body>
+
+<div class="qwe">@RenderPage("~/Views/Shared/_footerlink.cshtml")</div>
+
+<script src="js/ajax-function/login.js"></script>
+</html>
+
+
+
+<script>
+    function userlogin() {
+        debugger;
+        var model = {
+            Phone: $("#phone").val(),  // Corrected ID
+            Password: $("#pass").val(),       // Corrected ID
+            DeviceInfo: navigator.userAgent  // Device information
+        };
+
+        $.ajax({
+            url: '/Account/Login', // Controller action URL
+            type: 'POST',          // Use POST method
+            data: model,           // Data to be sent to the server
+            success: function (response) { // Success callback
+                if (response.success) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Optionally redirect or perform other actions on success
+                        window.location.href = '/Badhaaiya/Index'; // Example: Redirect to another page
+                    });
+                    
+                }
+                else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                        
+                        }).then(() => {
+                        // Optionally redirect or perform other actions on success
+                        window.location.href = '/Account/Registation'; // Example: Redirect to another page
+                    });
+                }
+            },
+            error: function (xhr, status, error) { // Error callback
+                Swal.fire('Error', 'Something went wrong. Please try again.', 'error');
+            }
+        });
+    }
+</script>
+
+

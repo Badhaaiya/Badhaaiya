@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "ViewAccount";
+    Layout = "~/Views/Shared/_sidebar.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div class="qwe">@RenderPage("~/Views/Shared/_headerlink.cshtml")</div>
+</head>
+<body>
+    <div class="qwe">@RenderPage("~/Views/Shared/_header.cshtml")</div>
+
+    <div class="main-wrapper">
+        @*<?php include('sidebar.php'); ?>*@
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <form id="bank-details">
+                    <div class="row">
+                        <div class="col-xl-12 col-xxl-12 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Bank Account Details</h4>
+                                </div>
+                                <div class="card-body">
+
+
+                                    <div class="row">
+
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">A/C Number</h6>
+                                                <input type="number" name="acc_number" id="acc_number" class="form-control" placeholder="10000XXXXX" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Confirm A/C Number</h6>
+                                                <input type="number" name="conf_acc_number" id="confirm_acc_number" class="form-control" placeholder="10000XXXXX" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">A/C Name</h6>
+                                                <input type="text" name="acc_name" class="form-control" placeholder="Frontend Dev" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-5 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">IFSC Code</h6>
+                                                <input type="text" name="ifsc_code" class="form-control" placeholder="ABCD0001234" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">Branch</h6>
+                                                <input type="text" name="branch_name" class="form-control" placeholder="" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 m-2">
+                                            <hr class="hr-text gradient" data-content="OR">
+                                        </div>
+
+                                        <div class="col-lg-4 mb-2">
+                                            <div class="form-group">
+                                                <h6 class="text-label">UPI ID</h6>
+                                                <input type="text" name="upi_id" class="form-control" placeholder="frontendev@bankname" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-4">
+                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- </form> is getting closed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="qweqr">@RenderPage("~/Views/Shared/_footer.cshtml")</div>
+</body>
+    
+</html>
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        // When the form is submitted
+        $('#bank-details').on('submit', function (event) {
+            debugger;
+            event.preventDefault(); // Prevent the form from submitting via the browser
+
+            // Get values from the form fields
+            var accNumber = $('#acc_number').val();
+            var confirmAccNumber = $('#confirm_acc_number').val();
+
+            // Validate account numbers
+            if (accNumber !== confirmAccNumber) {
+                Swal.fire('Error!', 'Account number and confirm account number must match.', 'error');
+                return false;
+            }
+
+            // Collect form data
+            var formData = {
+                acc_number: $('input[name="acc_number"]').val(),
+                acc_name: $('input[name="acc_name"]').val(),
+                ifsc_code: $('input[name="ifsc_code"]').val(),
+                branch_name: $('input[name="branch_name"]').val(),
+                upi_id: $('input[name="upi_id"]').val()
+            };
+
+            // Send the form data to the server via AJAX
+            $.ajax({
+                url: '/Badhaaiya/SaveBankDetails', // Your controller's action URL
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        // Show success alert
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Data saved successfully!',
+                            confirmButtonText: 'OK'
+                        });
+                    } else {
+                        // Show error alert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Failed to save data. Please try again.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Show error alert
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'An error occurred while saving the data. Please try again.',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        });
+    });
+</script>
